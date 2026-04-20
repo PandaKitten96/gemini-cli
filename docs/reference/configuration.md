@@ -1723,9 +1723,11 @@ their corresponding top-level category object in your `settings.json` file.
   - **Requires restart:** Yes
 
 - **`experimental.memoryManager`** (boolean):
-  - **Description:** Replace the built-in save_memory tool with a memory manager
-    subagent that supports adding, removing, de-duplicating, and organizing
-    memories.
+  - **Description:** Disable the built-in save_memory tool and let the main
+    agent persist memories by editing GEMINI.md files directly with
+    edit/write_file. Routes facts to the project GEMINI.md, subdirectory
+    GEMINI.md files, or the per-project user memory file (the global
+    ~/.gemini/GEMINI.md is not modified).
   - **Default:** `false`
   - **Requires restart:** Yes
 

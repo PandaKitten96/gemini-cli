@@ -2205,12 +2205,12 @@ const SETTINGS_SCHEMA = {
       },
       memoryManager: {
         type: 'boolean',
-        label: 'Memory Manager Agent',
+        label: 'Memory Manager',
         category: 'Experimental',
         requiresRestart: true,
         default: false,
         description:
-          'Replace the built-in save_memory tool with a memory manager subagent that supports adding, removing, de-duplicating, and organizing memories.',
+          'Disable the built-in save_memory tool and let the main agent persist memories by editing GEMINI.md files directly with edit/write_file. Routes facts to the project GEMINI.md, subdirectory GEMINI.md files, or the per-project user memory file (the global ~/.gemini/GEMINI.md is not modified).',
         showInDialog: true,
       },
       autoMemory: {

@@ -84,6 +84,14 @@ export interface OperationalGuidelinesOptions {
   interactiveShellEnabled: boolean;
   topicUpdateNarration: boolean;
   memoryManagerEnabled: boolean;
+  /**
+   * Absolute path to the user's per-project private memory file
+   * (e.g. ~/.gemini/tmp/<project-hash>/memory/GEMINI.md). Surfaced to the
+   * model when memoryManagerEnabled is true so the prompt-driven memory flow
+   * can route project-specific personal notes there instead of the committed
+   * project GEMINI.md.
+   */
+  userProjectMemoryPath?: string;
 }
 
 export type SandboxMode = 'macos-seatbelt' | 'generic' | 'outside';
@@ -811,8 +819,15 @@ function toolUsageRememberingFacts(
   options: OperationalGuidelinesOptions,
 ): string {
   if (options.memoryManagerEnabled) {
+    const userProjectBullet = options.userProjectMemoryPath
+      ? `
+  - **User Project** (\`${options.userProjectMemoryPath}\`): Personal-to-the-user, project-specific notes that must **NOT** be committed to the repo (local dev-setup notes, personal reminders about this codebase, private workflows for this project). This file is private to the user and is loaded automatically alongside \`./GEMINI.md\` for this workspace only.`
+      : '';
     return `
-- **Memory Tool:** You MUST use the '${AGENT_TOOL_NAME}' tool with the 'save_memory' agent to proactively record facts, preferences, and workflows that apply across all sessions. Whenever the user explicitly tells you to "remember" something, or when they state a preference or workflow (like "always lint after editing"), you MUST immediately call the save_memory subagent. Never save transient session state. Do not use memory to store summaries of code changes, bug fixes, or findings discovered during a task; this tool is strictly for persistent general knowledge.`;
+- **Memory Files:** You persist memories by editing \`GEMINI.md\` files directly with ${formatToolName(EDIT_TOOL_NAME)} or ${formatToolName(WRITE_FILE_TOOL_NAME)}. There is no \`save_memory\` tool. The current contents of all loaded \`GEMINI.md\` files are already in your context — do not re-read a file before editing it.
+  - **Project** (\`./GEMINI.md\`): Project architecture, conventions, workflows, and team info specific to this workspace. **Committed to the repo and shared with the team.**
+  - **Subdirectory** (e.g. \`./src/GEMINI.md\`): Detailed context scoped to one part of the project. Reference subdirectory files from \`./GEMINI.md\` so they remain discoverable.${userProjectBullet}
+  Whenever the user tells you to "remember" something or states a durable preference or workflow (like "always lint after editing"), append it to the right file immediately. Route team-shared project conventions to \`./GEMINI.md\` and personal-to-the-user project notes to the User Project file when available; if it could be either tier, ask the user. Keep entries concise and de-duplicate semantically equivalent items by editing in place. Never save transient session state, summaries of code changes, bug fixes, or task-specific findings — these files are loaded into every session and must stay lean.`;
   }
   const base = `
 - **Memory Tool:** Use ${formatToolName(MEMORY_TOOL_NAME)} to persist facts across sessions. It supports two scopes via the \`scope\` parameter:

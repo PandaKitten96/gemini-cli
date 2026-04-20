@@ -2948,9 +2948,9 @@
           "additionalProperties": false
         },
         "memoryManager": {
-          "title": "Memory Manager Agent",
-          "description": "Replace the built-in save_memory tool with a memory manager subagent that supports adding, removing, de-duplicating, and organizing memories.",
-          "markdownDescription": "Replace the built-in save_memory tool with a memory manager subagent that supports adding, removing, de-duplicating, and organizing memories.\n\n- Category: `Experimental`\n- Requires restart: `yes`\n- Default: `false`",
+          "title": "Memory Manager",
+          "description": "Disable the built-in save_memory tool and let the main agent persist memories by editing GEMINI.md files directly with edit/write_file. Routes facts to the project GEMINI.md, subdirectory GEMINI.md files, or the per-project user memory file (the global ~/.gemini/GEMINI.md is not modified).",
+          "markdownDescription": "Disable the built-in save_memory tool and let the main agent persist memories by editing GEMINI.md files directly with edit/write_file. Routes facts to the project GEMINI.md, subdirectory GEMINI.md files, or the per-project user memory file (the global ~/.gemini/GEMINI.md is not modified).\n\n- Category: `Experimental`\n- Requires restart: `yes`\n- Default: `false`",
           "default": false,
           "type": "boolean"
         },

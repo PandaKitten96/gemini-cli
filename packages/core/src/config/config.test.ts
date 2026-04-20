@@ -3441,6 +3441,27 @@ describe('Config JIT Initialization', () => {
       config = new Config(params);
       expect(config.isMemoryManagerEnabled()).toBe(true);
     });
+
+    it('should NOT add the global ~/.gemini directory to the workspace when enabled', async () => {
+      // The prompt-driven memoryManager mode does not route facts to
+      // ~/.gemini/GEMINI.md, so the broad ~/.gemini/ workspace inclusion is
+      // intentionally absent. The user-project memory file lives under
+      // getProjectTempDir(), which Config.isPathAllowed already accepts.
+      const params: ConfigParameters = {
+        sessionId: 'test-session',
+        targetDir: '/tmp/test',
+        debugMode: false,
+        model: 'test-model',
+        cwd: '/tmp/test',
+        experimentalMemoryManager: true,
+      };
+
+      config = new Config(params);
+      await config.initialize();
+
+      const directories = config.getWorkspaceContext().getDirectories();
+      expect(directories).not.toContain(Storage.getGlobalGeminiDir());
+    });
   });
 
   describe('isAutoMemoryEnabled', () => {

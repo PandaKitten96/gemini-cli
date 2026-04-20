@@ -30,7 +30,10 @@ import {
 } from '../tools/tool-names.js';
 import { resolveModel, supportsModernFeatures } from '../config/models.js';
 import { DiscoveredMCPTool } from '../tools/mcp-tool.js';
-import { getAllGeminiMdFilenames } from '../tools/memoryTool.js';
+import {
+  getAllGeminiMdFilenames,
+  getProjectMemoryFilePath,
+} from '../tools/memoryTool.js';
 import type { AgentLoopContext } from '../config/agent-loop-context.js';
 
 /**
@@ -213,6 +216,9 @@ export class PromptProvider {
             interactiveShellEnabled: context.config.isInteractiveShellEnabled(),
             topicUpdateNarration: isTopicUpdateNarrationEnabled,
             memoryManagerEnabled: context.config.isMemoryManagerEnabled(),
+            userProjectMemoryPath: context.config.isMemoryManagerEnabled()
+              ? getProjectMemoryFilePath(context.config.storage)
+              : undefined,
           }),
         ),
         sandbox: this.withSection('sandbox', () => ({
