@@ -4,6 +4,8 @@
 [![Gemini CLI E2E (Chained)](https://github.com/google-gemini/gemini-cli/actions/workflows/chained_e2e.yml/badge.svg)](https://github.com/google-gemini/gemini-cli/actions/workflows/chained_e2e.yml)
 [![Version](https://img.shields.io/npm/v/@google/gemini-cli)](https://www.npmjs.com/package/@google/gemini-cli)
 [![License](https://img.shields.io/github/license/google-gemini/gemini-cli)](https://github.com/google-gemini/gemini-cli/blob/main/LICENSE)
+[![Maintained](https://img.shields.io/badge/maintained-yes-brightgreen)](https://github.com/PandaKitten96/gemini-cli)
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/PandaKitten96?label=Sponsors&logo=github)](https://github.com/sponsors/PandaKitten96)
 [![View Code Wiki](https://assets.codewiki.google/readme-badge/static.svg)](https://codewiki.google/github.com/google-gemini/gemini-cli?utm_source=badge&utm_medium=github&utm_campaign=github.com/google-gemini/gemini-cli)
 
 ![Gemini CLI Screenshot](/docs/assets/gemini-screenshot.png)
@@ -385,6 +387,18 @@ for planned features and priorities.
 
 See the [Uninstall Guide](https://www.geminicli.com/docs/resources/uninstall)
 for removal instructions.
+
+## 💖 Support & Donate
+
+If you find Gemini CLI useful, consider supporting its development:
+
+| Platform | Link |
+|---|---|
+| 💵 Cash App | [$imthepanda](https://cash.app/$imthepanda) |
+| ❤️ GitHub Sponsors | [github.com/sponsors/PandaKitten96](https://github.com/sponsors/PandaKitten96) |
+| ☕ Buy Me a Coffee | [buymeacoffee.com/imthepanda](https://buymeacoffee.com/imthepanda) |
+
+Your support helps keep this project actively maintained and growing. Thank you!
 
 ## 📄 Legal
 

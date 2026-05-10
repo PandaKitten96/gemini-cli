@@ -569,3 +569,14 @@ If you have questions about contributing documentation:
 - Reach out to the maintainers.
 
 We appreciate your contributions to making Gemini CLI documentation better!
+
+## 💖 Supporting the Project
+
+If you'd like to support ongoing development beyond code contributions, you're
+welcome to sponsor the project:
+
+- 💵 **Cash App:** [$imthepanda](https://cash.app/$imthepanda)
+- ❤️ **GitHub Sponsors:**
+  [github.com/sponsors/PandaKitten96](https://github.com/sponsors/PandaKitten96)
+- ☕ **Buy Me a Coffee:**
+  [buymeacoffee.com/imthepanda](https://buymeacoffee.com/imthepanda)
